@@ -8,8 +8,5 @@ namespace Study_Exam70_483
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
