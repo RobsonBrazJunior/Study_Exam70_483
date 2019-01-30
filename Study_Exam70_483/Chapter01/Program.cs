@@ -9,25 +9,30 @@ namespace Chapter01
 {
     public static class Program
     {
+        [ThreadStatic]
+        public static int _field;
+
         public static void Main()
         {
-            bool stopped = false;
-
-            Thread t = new Thread(new ThreadStart(() =>
+            new Thread(() =>
             {
-                while (!stopped)
+                for (int x = 0; x < 10; x++)
                 {
-                    Console.WriteLine("Running...");
-                    Thread.Sleep(1000);
+                    _field++;
+                    Console.WriteLine("Thread A: {0}", _field);
                 }
-            }));
+            }).Start();
 
-            t.Start();
-            Console.WriteLine("Press any ky to exit");
+            new Thread(() =>
+            {
+                for (int x = 0; x < 10; x++)
+                {
+                    _field++;
+                    Console.WriteLine("Thread B: {0}", _field);
+                }
+            }).Start();
+
             Console.ReadKey();
-
-            stopped = true;
-            t.Join();
         }
     }
 }
