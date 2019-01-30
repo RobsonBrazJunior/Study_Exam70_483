@@ -9,9 +9,9 @@ namespace Chapter01
 {
     public static class Program
     {
-        public static void ThreadMethod()
+        public static void ThreadMethod(object o)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < (int)o; i++)
             {
                 Console.WriteLine("ThreadProc: {0}", i);
                 Thread.Sleep(1000);
@@ -20,10 +20,9 @@ namespace Chapter01
 
         public static void Main()
         {
-            Thread t = new Thread(new ThreadStart(ThreadMethod));
-            t.IsBackground = false;
-            //t.IsBackground = true;
-            t.Start();
+            Thread t = new Thread(new ParameterizedThreadStart(ThreadMethod));
+            t.Start(5);
+            t.Join();
         }
     }
 }
