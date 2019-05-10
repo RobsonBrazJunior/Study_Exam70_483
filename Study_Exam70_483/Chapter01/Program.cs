@@ -8,21 +8,24 @@ using System.Net.Http;
 
 namespace Chapter01
 {
-    public static class Program
+    public class Program
     {
         public static void Main()
         {
-            string result = DownloadContent().Result;
-            Console.WriteLine(result);
         }
 
-        public static async Task<string> DownloadContent()
+        public Task SleepAsyncA (int millisecondsTimeout)
         {
-            using(HttpClient client = new HttpClient())
-            {
-                string result = await client.GetStringAsync("http://www.microsoft.com");
-                return result;
-            }
+            return Task.Run(() => Thread.Sleep(millisecondsTimeout));
+        }
+
+        public Task SleepAsyncB (int millisecondsTimeout)
+        {
+            TaskCompletionSource<bool> tcs = null;
+            var t = new Timer(delegate { tcs.TrySetResult(true); }, null, -1, -1);
+            tcs = new TaskCompletionSource<bool>(t);
+            t.Change(millisecondsTimeout, -1);
+            return tcs.Task;
         }
     }
 }
