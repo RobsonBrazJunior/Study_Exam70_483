@@ -9,19 +9,15 @@ using System.IO;
 
 namespace Chapter01
 {
-    public class Program
+    public static class Program
     {
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        public static void Main()
         {
-            HttpClient httpClient = new HttpClient();
+            var numbers = Enumerable.Range(0, 10);
+            var parallelResult = numbers.AsParallel().Where(i => i % 2 == 0).ToArray();
 
-            string content = await httpClient.GetStringAsync("http://www.microsoft.com").ConfigureAwait(false);
-
-            using (FileStream sourceStream = new FileStream("temp.html", FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true))
-            {
-                byte[] encondedText = Enconding.Unicode.GetBytes(content);
-                await sourceStream.WriteAsync(encondedText, 0, encondedText.Length).ConfigureAwait(false);
-            }
+            foreach (int i in parallelResult)
+                Console.WriteLine(i);
         }
     }
 }
