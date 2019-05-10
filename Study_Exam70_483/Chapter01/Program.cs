@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Net.Http;
+using System.IO;
 
 namespace Chapter01
 {
@@ -16,7 +17,11 @@ namespace Chapter01
 
             string content = await httpClient.GetStringAsync("http://www.microsoft.com").ConfigureAwait(false);
 
-            Output.Content = content;
+            using (FileStream sourceStream = new FileStream("temp.html", FileMode.Create, FileAccess.Write, FileShare.None, 4096, useAsync: true))
+            {
+                byte[] encondedText = Enconding.Unicode.GetBytes(content);
+                await sourceStream.WriteAsync(encondedText, 0, encondedText.Length).ConfigureAwait(false);
+            }
         }
     }
 }
