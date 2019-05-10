@@ -10,22 +10,13 @@ namespace Chapter01
 {
     public class Program
     {
-        public static void Main()
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-        }
+            HttpClient httpClient = new HttpClient();
 
-        public Task SleepAsyncA (int millisecondsTimeout)
-        {
-            return Task.Run(() => Thread.Sleep(millisecondsTimeout));
-        }
+            string content = await httpClient.GetStringAsync("http://www.microsoft.com").ConfigureAwait(false);
 
-        public Task SleepAsyncB (int millisecondsTimeout)
-        {
-            TaskCompletionSource<bool> tcs = null;
-            var t = new Timer(delegate { tcs.TrySetResult(true); }, null, -1, -1);
-            tcs = new TaskCompletionSource<bool>(t);
-            t.Change(millisecondsTimeout, -1);
-            return tcs.Task;
+            Output.Content = content;
         }
     }
 }
