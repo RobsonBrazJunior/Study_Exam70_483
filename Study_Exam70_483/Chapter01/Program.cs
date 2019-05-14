@@ -9,21 +9,12 @@ namespace Chapter01
     {
         public static void Main()
         {
-            ConcurrentStack<int> stack = new ConcurrentStack<int>();
-
-            stack.Push(42);
+            ConcurrentQueue<int> queue = new ConcurrentQueue<int>();
+            queue.Enqueue(42);
 
             int result;
-            if (stack.TryPop(out result))
-                Console.WriteLine("Popped: {0}", result);
-
-            stack.PushRange(new int[] { 1, 2, 3 });
-
-            int[] values = new int[2];
-            stack.TryPopRange(values);
-
-            foreach (int i in values)
-                Console.WriteLine(i);
+            if (queue.TryDequeue(out result))
+                Console.WriteLine("Dequeued: {0}", result);
         }
     }
 }
