@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Chapter01
@@ -7,23 +8,30 @@ namespace Chapter01
     {
         public static void Main()
         {
-            int n = 0;
-
-            object _lock = new object();
+            object lockA = new object();
+            object lockB = new object();
 
             var up = Task.Run(() =>
             {
-                for (int i = 0; i < 1000000; i++)
-                    lock (_lock)
-                        n++;
+                lock (lockA)
+                {
+                    Thread.Sleep(1000);
+                    lock (lockB)
+                    {
+                        Console.WriteLine("Locked A and B");
+                    }
+                }
             });
 
-            for (int i = 0; i < 1000000; i++)
-                lock (_lock)
-                    n--;
+            lock (lockB)
+            {
+                lock (lockA)
+                {
+                    Console.WriteLine("Locked A and B");
+                }
+            }
 
             up.Wait();
-            Console.WriteLine(n);
         }
     }
 }
