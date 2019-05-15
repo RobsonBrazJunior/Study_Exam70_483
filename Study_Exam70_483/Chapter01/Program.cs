@@ -9,14 +9,18 @@ namespace Chapter01
         {
             int n = 0;
 
+            object _lock = new object();
+
             var up = Task.Run(() =>
             {
                 for (int i = 0; i < 1000000; i++)
-                    n++;
+                    lock (_lock)
+                        n++;
             });
 
             for (int i = 0; i < 1000000; i++)
-                n--;
+                lock (_lock)
+                    n--;
 
             up.Wait();
             Console.WriteLine(n);
