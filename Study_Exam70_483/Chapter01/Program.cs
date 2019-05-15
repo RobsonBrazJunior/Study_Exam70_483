@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Chapter01
@@ -9,17 +7,19 @@ namespace Chapter01
     {
         public static void Main()
         {
-            var dict = new ConcurrentDictionary<string, int>();
-            if (dict.TryAdd("k1", 42))
-                Console.WriteLine("Added");
+            int n = 0;
 
-            if (dict.TryUpdate("k1", 21, 42))
-                Console.WriteLine("42 updated to 21");
+            var up = Task.Run(() =>
+            {
+                for (int i = 0; i < 1000000; i++)
+                    n++;
+            });
 
-            dict["k1"] = 42; //Overwrite unconditionally
+            for (int i = 0; i < 1000000; i++)
+                n--;
 
-            int r1 = dict.AddOrUpdate("k1", 3, (s, i) => i * 2);
-            int r2 = dict.GetOrAdd("k2", 3);
+            up.Wait();
+            Console.WriteLine(n);
         }
     }
 }
