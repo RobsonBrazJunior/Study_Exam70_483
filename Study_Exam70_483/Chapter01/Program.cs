@@ -8,30 +8,18 @@ namespace Chapter01
     {
         public static void Main()
         {
-            object lockA = new object();
-            object lockB = new object();
+            object gate = new object();
+            bool __lockTaken = false;
 
-            var up = Task.Run(() =>
+            try
             {
-                lock (lockA)
-                {
-                    Thread.Sleep(1000);
-                    lock (lockB)
-                    {
-                        Console.WriteLine("Locked A and B");
-                    }
-                }
-            });
-
-            lock (lockB)
-            {
-                lock (lockA)
-                {
-                    Console.WriteLine("Locked A and B");
-                }
+                Monitor.Enter(gate, ref __lockTaken);
             }
-
-            up.Wait();
+            finally
+            {
+                if (__lockTaken)
+                    Monitor.Exit(gate);
+;            }
         }
     }
 }
