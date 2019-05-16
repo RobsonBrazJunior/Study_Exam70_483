@@ -4,21 +4,23 @@ using System.Threading.Tasks;
 
 namespace Chapter01
 {
-    public static class Program
+    public class Program
     {
-        private static int _flag = 0;
-        private static int _value = 0;
-
-        public static void Thread1()
+        static void Main()
         {
-            _value = 5;
-            _flag = 1;
-        }
+            int n = 0;
 
-        public static void Thread2()
-        {
-            if (_flag == 1)
-                Console.WriteLine(_value);
+            var up = Task.Run(() =>
+            {
+                for (int i = 0; i < 1000000; i++)
+                    Interlocked.Increment(ref n);
+            });
+
+            for (int i = 0; i < 1000000; i++)
+                Interlocked.Decrement(ref n);
+
+            up.Wait();
+            Console.WriteLine(n);
         }
     }
 }
