@@ -6,20 +6,19 @@ namespace Chapter01
 {
     public static class Program
     {
-        public static void Main()
-        {
-            object gate = new object();
-            bool __lockTaken = false;
+        private static int _flag = 0;
+        private static int _value = 0;
 
-            try
-            {
-                Monitor.Enter(gate, ref __lockTaken);
-            }
-            finally
-            {
-                if (__lockTaken)
-                    Monitor.Exit(gate);
-;            }
+        public static void Thread1()
+        {
+            _value = 5;
+            _flag = 1;
+        }
+
+        public static void Thread2()
+        {
+            if (_flag == 1)
+                Console.WriteLine(_value);
         }
     }
 }
