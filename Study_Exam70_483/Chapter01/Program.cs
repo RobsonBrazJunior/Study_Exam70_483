@@ -18,11 +18,22 @@ namespace Chapter01
                     Console.Write("*");
                     Thread.Sleep(1000);
                 }
+
+                token.ThrowIfCancellationRequested();
             }, token);
 
-            Console.WriteLine("Press enter to stop the task");
-            Console.ReadLine();
-            cancellationTokenSource.Cancel();
+            try
+            {
+                Console.WriteLine("Press enter to stop the task");
+                Console.ReadLine();
+
+                cancellationTokenSource.Cancel();
+                task.Wait();
+            }
+            catch (AggregateException e)
+            {
+                Console.WriteLine(e.InnerExceptions[0].Message);
+            }
 
             Console.WriteLine("Press enter to end the application");
             Console.ReadLine();
