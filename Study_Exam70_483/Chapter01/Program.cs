@@ -4,29 +4,21 @@ using System.Threading.Tasks;
 
 namespace Chapter01
 {
-    public static class Program
+    public  class Program
     {
-        static int value = 1;
-
         public static void Main()
         {
-            Task t1 = Task.Run(() =>
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+            CancellationToken token = cancellationTokenSource.Token;
+
+            Task task = Task.Run(() =>
             {
-                if (value == 1)
+                while (!token.IsCancellationRequested)
                 {
-                    // Removing the folloing line will change the output
+                    Console.Write("*");
                     Thread.Sleep(1000);
-                    value = 2;
                 }
-            });
-
-            Task t2 = Task.Run(() =>
-            {
-                value = 3;
-            });
-
-            Task.WaitAll(t1, t2);
-            Console.WriteLine(value); // Displays 2
+            }, token);
         }
     }
 }
