@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Chapter01
 {
-    public  class Program
+    public class Program
     {
         public static void Main()
         {
@@ -15,28 +15,14 @@ namespace Chapter01
             {
                 while (!token.IsCancellationRequested)
                 {
-                    Console.Write("*");
+                    Console.WriteLine("*");
                     Thread.Sleep(1000);
                 }
-
-                token.ThrowIfCancellationRequested();
-            }, token);
-
-            try
-            {
-                Console.WriteLine("Press enter to stop the task");
-                Console.ReadLine();
-
-                cancellationTokenSource.Cancel();
-                task.Wait();
-            }
-            catch (AggregateException e)
-            {
-                Console.WriteLine(e.InnerExceptions[0].Message);
-            }
-
-            Console.WriteLine("Press enter to end the application");
-            Console.ReadLine();
+            }, token).ContinueWith((t) =>
+             {
+                 t.Exception.Handle((e) => true);
+                 Console.WriteLine("You have canceled the task");
+             }, TaskContinuationOptions.OnlyOnCanceled);
         }
     }
 }
