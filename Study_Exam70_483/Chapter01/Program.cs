@@ -6,16 +6,10 @@ namespace Chapter01
 {
     public class Program
     {
-        public void OrShortCircuit()
+        public void Process (string input)
         {
-            bool x = true;
-            bool result = x || GetY();
-        }
-
-        private bool GetY()
-        {
-            Console.WriteLine("This method doesn't get called");
-            return true;
+            bool result = (input != null) && (input.StartsWith("v"));
+            // Do something with the result
         }
     }
 }
