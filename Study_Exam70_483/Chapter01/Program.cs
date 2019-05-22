@@ -6,10 +6,14 @@ namespace Chapter01
 {
     public class Program
     {
-        public void Process (string input)
+        public void Main()
         {
-            bool result = (input != null) && (input.StartsWith("v"));
-            // Do something with the result
+            bool a = true;
+            bool b = false;
+
+            Console.WriteLine(a ^ a); // False
+            Console.WriteLine(a ^ b); // True
+            Console.WriteLine(b ^ b); // False
         }
     }
 }
