@@ -6,17 +6,16 @@ namespace Chapter01
 {
     public class Program
     {
-        public static void Main()
+        public void OrShortCircuit()
         {
-            Task longRunning = Task.Run(() =>
-            {
-                Thread.Sleep(1000);
-            });
+            bool x = true;
+            bool result = x || GetY();
+        }
 
-            int index = Task.WaitAny(new[] { longRunning }, 1000);
-
-            if (index == -1)
-                Console.WriteLine("Task timed out");
+        private bool GetY()
+        {
+            Console.WriteLine("This method doesn't get called");
+            return true;
         }
     }
 }
