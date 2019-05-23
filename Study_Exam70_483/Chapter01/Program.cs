@@ -8,12 +8,12 @@ namespace Chapter01
     {
         public void Main()
         {
-            bool a = true;
-            bool b = false;
-
-            Console.WriteLine(a ^ a); // False
-            Console.WriteLine(a ^ b); // True
-            Console.WriteLine(b ^ b); // False
+            bool b = true;
+            if (b)
+            {
+                Console.WriteLine("Both these lines");
+                Console.WriteLine("Will be executed");
+            }
         }
     }
 }
