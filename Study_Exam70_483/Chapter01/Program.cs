@@ -11,8 +11,8 @@ namespace Chapter01
             bool b = true;
             if (b)
             {
-                Console.WriteLine("Both these lines");
-                Console.WriteLine("Will be executed");
+                int r = 42; // r is not accessible out side code block
+                b = false;
             }
         }
     }
