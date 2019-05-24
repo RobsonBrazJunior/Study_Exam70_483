@@ -6,14 +6,14 @@ namespace Chapter01
 {
     public class Program
     {
-        public void Main()
+        public static void Main()
         {
-            bool b = true;
+            bool b = false;
+
             if (b)
-            {
-                int r = 42; // r is not accessible out side code block
-                b = false;
-            }
+                Console.WriteLine("True");
+            else
+                Console.WriteLine("False");
         }
     }
 }
