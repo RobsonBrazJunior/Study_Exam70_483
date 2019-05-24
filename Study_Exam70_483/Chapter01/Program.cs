@@ -9,11 +9,14 @@ namespace Chapter01
         public static void Main()
         {
             bool b = false;
+            bool c = true;
 
             if (b)
-                Console.WriteLine("True");
+                Console.WriteLine("b is true");
+            else if (c)
+                Console.WriteLine("c is true");
             else
-                Console.WriteLine("False");
+                Console.WriteLine("b an c are false");
         }
     }
 }
