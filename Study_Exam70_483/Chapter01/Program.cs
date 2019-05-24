@@ -8,15 +8,16 @@ namespace Chapter01
     {
         public static void Main()
         {
-            bool b = false;
+            bool b = true;
             bool c = true;
 
             if (b)
-                Console.WriteLine("b is true");
-            else if (c)
-                Console.WriteLine("c is true");
-            else
-                Console.WriteLine("b an c are false");
+            {
+                if (c)
+                    Console.WriteLine("c is true");
+                else
+                    Console.WriteLine("b an c are false");
+            }
         }
     }
 }
