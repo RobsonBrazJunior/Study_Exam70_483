@@ -9,7 +9,8 @@ namespace Chapter01
         public static void Main()
         {
             int? x = null;
-            int y = x ?? -1;
+            int? z = null;
+            int y = x ?? z ?? -1;
         }
     }
 }
