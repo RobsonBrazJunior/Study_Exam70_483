@@ -7,10 +7,17 @@ namespace Chapter01
     public class Program
     {
         public static void Main()
+        {           
+        }
+
+        private static int GetValue(bool p)
         {
-            int? x = null;
-            int? z = null;
-            int y = x ?? z ?? -1;
+            if (p)
+                return 1;
+            else
+                return 0;
+
+            return p ? 1 : 0;
         }
     }
 }
