@@ -10,14 +10,20 @@ namespace Chapter01
         {           
         }
 
-        private static int GetValue(bool p)
+        void Check(char input)
         {
-            if (p)
-                return 1;
+            if (input == 'a'
+                || input == 'e'
+                || input == 'i'
+                || input == 'o'
+                || input == 'u')
+            {
+                Console.WriteLine("Input is a vowel");
+            }
             else
-                return 0;
-
-            return p ? 1 : 0;
+            {
+                Console.WriteLine("Input is a consonant");
+            }
         }
     }
 }
