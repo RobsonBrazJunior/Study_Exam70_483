@@ -10,19 +10,29 @@ namespace Chapter01
         {           
         }
 
-        void Check(char input)
+        void CheckWithSwitch(char input)
         {
-            if (input == 'a'
-                || input == 'e'
-                || input == 'i'
-                || input == 'o'
-                || input == 'u')
+            switch (input)
             {
-                Console.WriteLine("Input is a vowel");
-            }
-            else
-            {
-                Console.WriteLine("Input is a consonant");
+                case 'a':
+                case 'e':
+                case 'i':
+                case 'o':
+                case 'u':
+                    {
+                        Console.WriteLine("Input is a vowel");
+                        break;
+                    }
+                case 'y':
+                    {
+                        Console.WriteLine("Input is sometimes a vowel.");
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Input is a consonant");
+                        break;
+                    }
             }
         }
     }
