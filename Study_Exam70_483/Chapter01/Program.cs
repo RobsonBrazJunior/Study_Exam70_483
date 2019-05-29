@@ -9,12 +9,9 @@ namespace Chapter01
         public static void Main()
         {
             int[] values = { 1, 2, 3, 4, 5, 6 };
-            for (int x = 0, y = values.Length - 1;
-                ((x < values.Length) && (y >= 0));
-                x++, y--)
+            for (int index = 0; index < values.Length; index += 2)
             {
-                Console.WriteLine(values[x]);
-                Console.WriteLine(values[y]);
+                Console.Write(values[index]);
             }
         }
     }
