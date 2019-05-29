@@ -12,7 +12,7 @@ namespace Chapter01
             for (int index = 0; index < values.Length; index++)
             {
                 if (values[index] == 4)
-                    break;
+                    continue;
 
                 Console.Write(values[index]);
             }
