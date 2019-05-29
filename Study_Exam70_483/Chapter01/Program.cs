@@ -8,24 +8,11 @@ namespace Chapter01
     {
         public static void Main()
         {
-            int i = 1;
-            switch (i)
+            int[] values = { 1, 2, 3, 4, 5, 6 };
+            for (int index = 0; index < values.Length; index++)
             {
-                case 1:
-                    {
-                        Console.WriteLine("Case 1");
-                        goto case 2;
-                    }
-                case 2:
-                    {
-                        Console.WriteLine("Case 2");
-                        break;
-                    }
+                Console.WriteLine(values[index]);
             }
         }
-
-        //Displays
-        //Case 1
-        //Case 2
     }
 }
