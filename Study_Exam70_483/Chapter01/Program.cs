@@ -27,11 +27,21 @@ namespace Chapter01
                 new Person() {FirstName = "Jane", LastName = "Doe"}
             };
 
-            foreach (Person p in people)
+            List<Person>.Enumerator e = people.GetEnumerator();
+
+            try
             {
-                p.LastName = "Changed"; // This is allowed
-                Console.WriteLine(p.FirstName + " " + p.LastName);
-                // p = new Person();  //This gives a compile error
+                Person v;
+                while (e.MoveNext())
+                {
+                    v = e.Current;
+                }
+            }
+            finally
+            {
+                System.IDisposable d = e as System.IDisposable;
+                if (d != null)
+                    d.Dispose();
             }
         }
     }    
