@@ -8,11 +8,12 @@ namespace Chapter01
     {
         public static void Main()
         {
-            do
+            int[] values = { 1, 2, 3, 4, 5, 6 };
+
+            foreach (int i in values)
             {
-                Console.WriteLine("Executed once!");
+                Console.Write(i);
             }
-            while (false);
         }
     }
 }
