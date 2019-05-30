@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,12 +9,31 @@ namespace Chapter01
     {
         public static void Main()
         {
-            int[] values = { 1, 2, 3, 4, 5, 6 };
-
-            foreach (int i in values)
-            {
-                Console.Write(i);
-            }
+            Person pessoa = new Person();
+            pessoa.CannotChangeForeachIterationVariable();
         }
     }
+
+    class Person
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public void CannotChangeForeachIterationVariable()
+        {
+            var people = new List<Person>
+            {
+                new Person() {FirstName = "John", LastName = "Doe"},
+                new Person() {FirstName = "Jane", LastName = "Doe"}
+            };
+
+            foreach (Person p in people)
+            {
+                p.LastName = "Changed"; // This is allowed
+                Console.WriteLine(p.FirstName + " " + p.LastName);
+                // p = new Person();  //This gives a compile error
+            }
+        }
+    }    
 }
+
