@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,31 +8,14 @@ namespace Chapter01
 {
     public class Program
     {
-        public static void Main()
-        {
-            Program p = new Program();
-            p.Multicast();
-        }
+        public delegate TextWriter CovarianceDel();
 
-        public void MethodOne()
-        {
-            Console.WriteLine("MethodOne");
-        }
+        public StreamWriter MethodStream() { return null; }
+        public StringWriter MethodString() { return null; }
 
-        public void MethodTwo()
-        {
-            Console.WriteLine("MethodTwo");
-        }
-
-        public delegate void Del();
-
-        public void Multicast()
-        {
-            Del d = MethodOne;
-            d += MethodTwo;
-
-            d();
-        }
+        CovarianceDel del;
+        del = MethodStream;
+        del = MethodString;
     }
 }
 
