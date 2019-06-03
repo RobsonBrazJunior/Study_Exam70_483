@@ -9,12 +9,29 @@ namespace Chapter01
     {
         public static void Main()
         {
-            int x = 3;
-            if (x == 3) goto customLabel;
-            x++;
+            Program p = new Program();
+            p.UseDelegate();
+        }
 
-            customLabel:
-            Console.WriteLine(x);
+        public delegate int Calcualte(int x, int y);
+
+        public int Add(int x, int y)
+        {
+            return x + y;
+        }
+
+        public int Multiply(int x, int y)
+        {
+            return x * y;
+        }
+
+        public void UseDelegate()
+        {
+            Calcualte calc = Add;
+            Console.WriteLine(calc(3, 4));
+
+            calc = Multiply;
+            Console.WriteLine(calc(3,4));
         }
     }
 }
