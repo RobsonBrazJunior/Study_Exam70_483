@@ -8,14 +8,10 @@ namespace Chapter01
 {
     public class Program
     {
-        public delegate TextWriter CovarianceDel();
+        void DoSomething(TextWriter tw) { }
+        public delegate void ContravarianceDel(StreamWriter tw);
 
-        public StreamWriter MethodStream() { return null; }
-        public StringWriter MethodString() { return null; }
-
-        CovarianceDel del;
-        del = MethodStream;
-        del = MethodString;
+        ContravarianceDel del = DoSomething;
     }
 }
 
