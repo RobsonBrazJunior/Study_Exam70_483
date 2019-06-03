@@ -10,28 +10,27 @@ namespace Chapter01
         public static void Main()
         {
             Program p = new Program();
-            p.UseDelegate();
+            p.Multicast();
         }
 
-        public delegate int Calcualte(int x, int y);
-
-        public int Add(int x, int y)
+        public void MethodOne()
         {
-            return x + y;
+            Console.WriteLine("MethodOne");
         }
 
-        public int Multiply(int x, int y)
+        public void MethodTwo()
         {
-            return x * y;
+            Console.WriteLine("MethodTwo");
         }
 
-        public void UseDelegate()
-        {
-            Calcualte calc = Add;
-            Console.WriteLine(calc(3, 4));
+        public delegate void Del();
 
-            calc = Multiply;
-            Console.WriteLine(calc(3,4));
+        public void Multicast()
+        {
+            Del d = MethodOne;
+            d += MethodTwo;
+
+            d();
         }
     }
 }
