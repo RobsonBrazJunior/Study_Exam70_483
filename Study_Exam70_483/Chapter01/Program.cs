@@ -1,17 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Chapter01
 {
     public class Program
     {
-        void DoSomething(TextWriter tw) { }
-        public delegate void ContravarianceDel(StreamWriter tw);
+        public void CreatedAndRaise()
+        {
+            Pub p = new Pub();
+            p.OnChange += () => Console.WriteLine("Event raised to method 1");
+            p.OnChange += () => Console.WriteLine("Event raised to method 2");
+            p.Raise();
+        }
+    }
 
-        ContravarianceDel del = DoSomething;
+    public class Pub
+    {
+        public Action OnChange { get; set; }
+
+        public void Raise()
+        {
+            if (OnChange != null)
+            {
+                OnChange();
+            }
+        }
     }
 }
 
