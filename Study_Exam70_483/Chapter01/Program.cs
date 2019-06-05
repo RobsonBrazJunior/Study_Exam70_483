@@ -15,14 +15,11 @@ namespace Chapter01
 
     public class Pub
     {
-        public Action OnChange { get; set; }
+        public Action OnChange = delegate { };
 
         public void Raise()
-        {
-            if (OnChange != null)
-            {
-                OnChange();
-            }
+        {            
+            OnChange();
         }
     }
 }
