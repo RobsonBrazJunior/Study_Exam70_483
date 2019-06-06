@@ -4,22 +4,37 @@ namespace Chapter01
 {
     public class Program
     {
-        public void CreatedAndRaise()
+        public static void Main(string[] args)
+        {
+            Program p = new Program();
+            p.CreateAndRaise();
+        }
+
+        public void CreateAndRaise()
         {
             Pub p = new Pub();
-            p.OnChange += () => Console.WriteLine("Event raised to method 1");
-            p.OnChange += () => Console.WriteLine("Event raised to method 2");
-            p.Raise();
+
+            p.OnChange += (sender, e) => Console.WriteLine("Event raised: {0}", e.Value);
+        }
+    }
+
+    public class MyArgs : EventArgs
+    {
+        public int Value { get; set; }
+
+        public MyArgs(int value)
+        {
+            Value = value;
         }
     }
 
     public class Pub
     {
-        public Action OnChange = delegate { };
+        public event EventHandler<MyArgs> OnChange = delegate { };
 
         public void Raise()
-        {            
-            OnChange();
+        {
+            OnChange(this, new MyArgs(42));
         }
     }
 }
