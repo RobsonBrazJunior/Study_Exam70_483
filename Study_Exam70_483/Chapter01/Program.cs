@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Chapter01
 {
@@ -8,8 +6,21 @@ namespace Chapter01
     {
         public static void Main()
         {
-            string s = "NaN";
-            int i = int.Parse(s);
+            while (true)
+            {
+                string s = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(s)) break;
+
+                try
+                {
+                    int i = int.Parse(s);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("{0} is not a valid number. Please try again", s);
+                }
+            }
         }
     }
 }
