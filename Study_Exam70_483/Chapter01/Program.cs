@@ -16,6 +16,10 @@ namespace Chapter01
                 {
                     int i = int.Parse(s);
                 }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("You need to enter a value");
+                }
                 catch (FormatException)
                 {
                     Console.WriteLine("{0} is not a valid number. Please try again", s);
