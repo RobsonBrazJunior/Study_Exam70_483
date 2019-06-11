@@ -11,14 +11,7 @@ namespace Chapter01
             try
             {
                 int i = int.Parse(s);
-            }
-            catch (ArgumentNullException)
-            {
-                Console.WriteLine("You need to enter a value");
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("{0} is not a valid number. Please try again", s);
+                if (i == 42) Environment.FailFast("Special number entered");
             }
             finally
             {
