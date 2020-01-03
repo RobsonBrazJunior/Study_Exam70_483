@@ -63,6 +63,7 @@
     <Compile Include="Objective1_1_ManageProgramFlow\Listing_1_003.cs" />
     <Compile Include="Objective1_1_ManageProgramFlow\Listing_1_004.cs" />
     <Compile Include="Objective1_1_ManageProgramFlow\Listing_1_005.cs" />
+    <Compile Include="Objective1_1_ManageProgramFlow\Listing_1_006.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
