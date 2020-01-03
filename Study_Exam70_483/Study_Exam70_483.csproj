@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Study_Exam70_483.Objective1_1.Example_1_012</StartupObject>
+    <StartupObject>Study_Exam70_483.Objective1_1_ManageProgramFlow.Listing_1_001</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -58,13 +58,12 @@
     <Compile Include="Objective1_1\Example_1_010.cs" />
     <Compile Include="Objective1_1\Example_1_011.cs" />
     <Compile Include="Objective1_1\Example_1_012.cs" />
+    <Compile Include="Objective1_1_ManageProgramFlow\Listing_1_001.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Objective1_1_ManageProgramFlow\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
