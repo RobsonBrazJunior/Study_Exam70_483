@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Study_Exam70_483.Objective1_1.Example_1_010</StartupObject>
+    <StartupObject>Study_Exam70_483.Objective1_1.Example_1_011</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,6 +56,7 @@
     <Compile Include="Objective1_1\Example_1_008.cs" />
     <Compile Include="Objective1_1\Example_1_009.cs" />
     <Compile Include="Objective1_1\Example_1_010.cs" />
+    <Compile Include="Objective1_1\Example_1_011.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
