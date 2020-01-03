@@ -4,7 +4,7 @@
 
 **Sources**
 -----------
-- Journey towards the Microsoft 70-483 Programming with C# Certification author Felipe Luis:
+- Journey towards the Microsoft 70-483 Programming with C# Certification by author Felipe Luis:
     [repository](https://github.com/luisdeol/microsoft-exam-70-483-programming-with-c-the-journey-towards-the-certification)
 - C# programming guide:
     [docs](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/)
