@@ -3,21 +3,25 @@ using System.Threading.Tasks;
 
 namespace Study_Exam70_483.Objective1_2_ManageMultithreading
 {
-	//Accessing shared data in a multithreaded application
-	public class Listing_1_035
+	//Using the lock keyword
+	class Listing_1_036
 	{
 		static void Main()
 		{
 			int n = 0;
 
+			object _lock = new object();
+
 			var up = Task.Run(() =>
 			{
 				for (int i = 0; i < 1000000; i++)
-					n++;
+					lock (_lock)
+						n++;
 			});
 
 			for (int i = 0; i < 1000000; i++)
-				n--;
+				lock (_lock)
+					n--;
 
 			up.Wait();
 			Console.WriteLine(n);
