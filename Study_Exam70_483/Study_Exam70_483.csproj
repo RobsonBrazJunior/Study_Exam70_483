@@ -112,6 +112,7 @@
     <Compile Include="Objective1_2\Example_1_2_003.cs" />
     <Compile Include="Objective1_2\Example_1_2_004.cs" />
     <Compile Include="Objective1_2\Example_1_2_005.cs" />
+    <Compile Include="Objective1_2\Example_1_2_006.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
