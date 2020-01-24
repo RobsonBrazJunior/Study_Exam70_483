@@ -123,6 +123,7 @@
     <Compile Include="Objective1_2_ManageMultithreading\Listing_1_040.cs" />
     <Compile Include="Objective1_2_ManageMultithreading\Listing_1_041.cs" />
     <Compile Include="Objective1_2_ManageMultithreading\Listing_1_042.cs" />
+    <Compile Include="Objective1_2_ManageMultithreading\Listing_1_043.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
