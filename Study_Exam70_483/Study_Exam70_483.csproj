@@ -117,6 +117,7 @@
     <Compile Include="Objective1_2\Example_1_2_008.cs" />
     <Compile Include="Objective1_2_ManageMultithreading\Listing_1_035.cs" />
     <Compile Include="Objective1_2_ManageMultithreading\Listing_1_036.cs" />
+    <Compile Include="Objective1_2_ManageMultithreading\Listing_1_037.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
