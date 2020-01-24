@@ -109,6 +109,7 @@
     <Compile Include="Objective1_1_ManageProgramFlow\Listing_1_034.cs" />
     <Compile Include="Objective1_2\Example_1_2_001.cs" />
     <Compile Include="Objective1_2\Example_1_2_002.cs" />
+    <Compile Include="Objective1_2\Example_1_2_003.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
